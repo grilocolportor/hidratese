@@ -9,7 +9,7 @@ abstract class IUserProfileUserCase {
       UserProfileParams params);
 }
 
-class UserProfileUserCase extends GetxController
+class UserProfileUserCase 
     implements IUserProfileUserCase {
   final UserProfileUserCase _repository;
 
