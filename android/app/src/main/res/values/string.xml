@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hidratese</string>
+    <string name="default_notification_title">Hidratese</string>
+    <string name="default_notification_message">Testando Notification</string>
+    <string name="default_notification_big_text">WTF</string>
+</resources>
