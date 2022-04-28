@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
-import 'package:hidratese/infrastructure/navigation/bindings/controllers/controller.binding.dart';
+import 'package:hidratese/infrastructure/navigation/bindings/controller.binding.dart';
 
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';

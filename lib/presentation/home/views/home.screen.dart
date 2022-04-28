@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'controllers/home.controller.dart';
+import '../controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
   final _homeController = Get.find<HomeController>();

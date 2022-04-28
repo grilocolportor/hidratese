@@ -1,1 +1,1 @@
-export 'package:hidratese/presentation/home/home.screen.dart';
+export 'package:hidratese/presentation/home/views/home.screen.dart';
