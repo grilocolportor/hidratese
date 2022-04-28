@@ -4,5 +4,5 @@ import 'package:hidratese/domain/execeptions/user_profile_exceptions.dart';
 import 'package:hidratese/domain/usercases/user_profile_usercase.dart';
 
 abstract class IUserProfileRepository {
-   Future<Either<UserProfilesExceptions, UserProfile >>registerUser(UserProfileParams params);
+   Future<Either<UserProfilesExceptions, int >>registerUser(UserProfileParams params);
 }

@@ -13,14 +13,19 @@ class HomeScreen extends GetView<HomeController> {
         title: Text('HomeScreen'),
         centerTitle: true,
       ),
-      body: InkWell(
-        child: Center(
-          child: Text(
-            'HomeScreen is working',
-            style: TextStyle(fontSize: 20),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Obx(() =>
+               Text(
+                _homeController.resultInsert.value,
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
           ),
-        ),
-        onTap: () => _homeController.onClick(),
+          TextButton(onPressed: () => _homeController.onClick(), child: Text('Click aqui'))
+        ],
       ),
     );
   }

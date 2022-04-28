@@ -1,40 +1,52 @@
 import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
-import 'package:hidratese/domain/entities/user_profile.dart';
 import 'package:hidratese/domain/execeptions/user_profile_exceptions.dart';
-import 'package:hidratese/infrastructure/repositories/user_profile_repository_impl.dart';
+import 'package:hidratese/domain/repositories/user_profile_repository_interface.dart';
 
 abstract class IUserProfileUserCase {
-  Future<Either<UserProfilesExceptions, UserProfile>> call(
-      UserProfileParams params);
+  Future<Either<UserProfilesExceptions, int>> call(UserProfileParams params);
 }
 
-class UserProfileUserCase 
-    implements IUserProfileUserCase {
-  final UserProfileUserCase _repository;
+class UserProfileUserCase implements IUserProfileUserCase {
+  final IUserProfileRepository _repository;
 
   UserProfileUserCase(this._repository);
 
   @override
-  Future<Either<UserProfilesExceptions, UserProfile>> call(
+  Future<Either<UserProfilesExceptions, int>> call(
       UserProfileParams params) async {
-    if (params.weight.compareTo(0) == 0) {
+    if (params.weight!.isEmpty) {
       return Left(throw UserProfilesExceptions('Weight cannot be zero'));
     }
 
-    return await _repository(params);
+    return await _repository.registerUser(params);
   }
 }
 
-class UserProfileParams extends GetxController {
-  final String gender;
-  final double weight;
-  final DateTime sleep;
-  final DateTime wakeUp;
+class UserProfileParams {
+  final String? gender;
+  final String? weight;
+  final String? sleep;
+  final String? wakeUp;
+  final String? remember;
+  final String? liter;
 
-  UserProfileParams(
-      {required this.gender,
-      required this.weight,
-      required this.sleep,
-      required this.wakeUp});
+  UserProfileParams( {
+        this.remember,
+      this.liter,
+      this.gender,
+      this.weight,
+      this.sleep,
+      this.wakeUp});
+
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> jsonData = {
+      'sexo': gender,
+      'peso': weight,
+      'acordar': wakeUp,
+      'dormir': sleep,
+      'lembrar': remember,
+      'litros': liter,
+    };
+    return jsonData;
+  }
 }
