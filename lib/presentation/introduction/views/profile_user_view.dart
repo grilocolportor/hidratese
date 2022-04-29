@@ -127,9 +127,10 @@ class ProfileUserView extends GetView<ProfileUserController> {
                   ),
                 ],
               ),
+              SizedBox(height: 20,),
               Center(
                 child: TextButton(
-                  child: Text('Adcionar'),
+                  child: CustomText(text: 'Adcionar'),
                   onPressed: ()=> _perfilController.addPerfil(),
                 ),
               )

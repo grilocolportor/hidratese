@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hidratese/infrastructure/utils/utils.dart';
 
 final colorSchemeDark = ColorScheme.dark(
-    primary: Color(Utils.getColorFromHex('#173447')), secondary: Colors.white);
+  primary: Color(Utils.getColorFromHex('#173447')),
+  secondary: Colors.white,
+  tertiary: Colors.blueAccent
+);
 
 final textStyleDark = TextStyle(color: colorSchemeDark.secondary);
 final textThemeDark = TextTheme(
@@ -19,4 +22,8 @@ final textThemeDark = TextTheme(
   caption: textStyleDark,
   button: textStyleDark,
   overline: textStyleDark,
+);
+
+final textButtonThemeDark = TextButtonThemeData(
+  style: TextButton.styleFrom(primary: colorSchemeDark.tertiary),
 );
