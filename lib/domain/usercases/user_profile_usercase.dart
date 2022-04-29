@@ -14,11 +14,14 @@ class UserProfileUserCase implements IUserProfileUserCase {
   @override
   Future<Either<UserProfilesExceptions, int>> call(
       UserProfileParams params) async {
-    if (params.weight!.isEmpty) {
-      return Left(throw UserProfilesExceptions('Weight cannot be zero'));
+    if (params.wakeUp!.isEmpty) {
+      return Left(throw UserProfilesExceptions('Weight cannot be empty'));
     }
-
-    return await _repository.registerUser(params);
+    if (params.sleep!.isEmpty) {
+      return Left(throw UserProfilesExceptions('Sleep cannot be empty'));
+    } else {
+      return await _repository.registerUser(params);
+    }
   }
 }
 
@@ -30,8 +33,8 @@ class UserProfileParams {
   final String? remember;
   final String? liter;
 
-  UserProfileParams( {
-        this.remember,
+  UserProfileParams(
+      {this.remember,
       this.liter,
       this.gender,
       this.weight,

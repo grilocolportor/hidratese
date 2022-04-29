@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/domain/usercases/user_profile_usercase.dart';
-import 'package:intl/intl.dart';
 
 class ProfileUserController extends GetxController {
-//  final _hidrateseControler = Get.find<HidrateseController>();
+  final _profileUserCase = Injector.resolve<UserProfileUserCase>();
 
   TextEditingController pesoEditController = TextEditingController();
   TextEditingController dormirEditController = TextEditingController();
@@ -25,14 +24,22 @@ class ProfileUserController extends GetxController {
     super.onReady();
   }
 
-  Future<void> addPerfil() async {
-    // _hidrateseControler.userModel.value.acordar = acordar.value;
-    // _hidrateseControler.userModel.value.dormir = dormir.value;
-    // _hidrateseControler.userModel.value.sexo =
-    //     sexo.value ? 'masculino' : 'Femenino';
-    // _hidrateseControler.userModel.value.peso = peso.value.toString();
-    // _hidrateseControler.userModel.value.litros = (peso.value * 35).toString();
+  void updateTime(String modo, var h, var m) {
+    switch (modo) {
+      case 'dormir':
+        dormirEditController.text = '$h:$m';
+        dormir.value = '$h:$m';
+        break;
+      case 'acordar':
+        acordarEditController.text = '$h:$m';
+        acordar.value = '$h:$m';
+        break;
+      default:
+        '';
+    }
+  }
 
+  Future<void> addPerfil() async {
     // await _hidrateseControler.gerarRelatorio();
 
     // await _hidrateseControler.addDayleTarget();
@@ -40,19 +47,24 @@ class ProfileUserController extends GetxController {
     // SharedPreferences prefs = await SharedPreferences.getInstance();
     // prefs.setBool('cancelNotification', false);
 
-     final _userProfileParam = UserProfileParams(
-    gender: '',
-    weight: '70.0',
-    sleep: DateFormat('hh:MM').format(DateTime.now()),
-    wakeUp: DateFormat('hh:MM').format(DateTime.now()),
-  );
+    final _userProfileParam = UserProfileParams(
+        gender: sexo.value ? 'masculino' : 'Femenino',
+        weight: peso.value.toString(),
+        sleep: acordar.value,
+        wakeUp: dormir.value,
+        liter: (peso.value * 35).toString());
 
- var resultInsert = ''.obs;
+    var resultInsert = ''.obs;
 
-    final userProfile = Injector.container.resolve<UserProfileUserCase>();
-    var p = await userProfile.call(_userProfileParam);
-    p.fold((l) => resultInsert.value = l.message,
-        (r) => resultInsert.value = 'Usuario adcionado');
+    await _profileUserCase.call(_userProfileParam).then((value) {
+      if (value.isRight()) {
+        resultInsert.value = 'Usuario adcionado';
+      } else {
+        resultInsert.value = value.toString();
+      }
+    });
+
+    print('------------${resultInsert.value}');
   }
 
   @override

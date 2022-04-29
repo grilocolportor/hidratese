@@ -5,5 +5,4 @@ final  themeDatalight = ThemeData.light().copyWith(
   textTheme: textThemeLight,
   scaffoldBackgroundColor:   colorSchemeLight.primary,
 
-
 );

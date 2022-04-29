@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 

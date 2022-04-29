@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:hidratese/domain/execeptions/sql_exception.dart';
 import 'package:sqflite/sqflite.dart';
 
-abstract class IDataBaseHelper {
+abstract class ISQLDataBaseHelper {
   Future<int> insert(Map<String, dynamic> row, String table);
   Future<int> insertDayleTarget(Map<String, dynamic> row, String table);
   Future<int?> queryRowCount(String table);
@@ -13,7 +13,7 @@ abstract class IDataBaseHelper {
   Future<int> delete(int id, String table);
 }
 
-class DatabaseHelper implements IDataBaseHelper {
+class DatabaseHelper implements ISQLDataBaseHelper {
   static Database? _database;
 
 //  static final table = 'User';

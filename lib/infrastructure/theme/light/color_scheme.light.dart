@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hidratese/infrastructure/utils/utils.dart';
 
 final colorSchemeLight = ColorScheme.light(
-    primary: Colors.white, 
-    secondary:Color(Utils.getColorFromHex('#173447')) );
+    primary: Colors.white, secondary: Color(Utils.getColorFromHex('#173447')));
 
-final textStyleWhite =
-    TextStyle(color: colorSchemeLight.secondary, );
+final textStyleWhite = TextStyle(
+  color: colorSchemeLight.secondary,
+  
+);
 final textThemeLight = TextTheme(
   headline1: textStyleWhite,
   headline2: textStyleWhite,
@@ -21,4 +22,5 @@ final textThemeLight = TextTheme(
   caption: textStyleWhite,
   button: textStyleWhite,
   overline: textStyleWhite,
+
 );
