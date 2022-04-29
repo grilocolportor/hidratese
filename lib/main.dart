@@ -31,6 +31,7 @@ class Main extends StatelessWidget {
       initialRoute: initialRoute,
       getPages: Nav.routes,
       initialBinding: ControllerBinding(),
+     
     );
   }
 }
