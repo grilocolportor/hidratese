@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/domain/usercases/user_profile_usercase.dart';
+import 'package:hidratese/infrastructure/utils/contants.dart';
 
 class ProfileUserController extends GetxController {
   final _profileUserCase = Injector.resolve<UserProfileUserCase>();
@@ -48,20 +49,20 @@ class ProfileUserController extends GetxController {
     // prefs.setBool('cancelNotification', false);
 
     final _userProfileParam = UserProfileParams(
-        gender: sexo.value ? 'masculino' : 'Femenino',
-        weight: peso.value.toString(),
-        sleep: acordar.value,
-        wakeUp: dormir.value,
-        liter: (peso.value * 35).toString());
+      gender: sexo.value ? 'masculino' : 'Femenino',
+      sleep: acordar.value,
+      wakeUp: dormir.value,
+    );
+
+
+     //liter: (peso.value * coeficientePadrao).toString()
 
     var resultInsert = ''.obs;
 
     await _profileUserCase.call(_userProfileParam).then((value) {
       if (value.isRight()) {
         resultInsert.value = 'Usuario adcionado';
-      } else {
-        resultInsert.value = value.toString();
-      }
+      } else {}
     });
 
     print('------------${resultInsert.value}');

@@ -34,10 +34,11 @@ class IntroductioHelper extends StatelessWidget {
         onSkip: () {
           // You can also override onSkip callback
         },
-        showSkipButton: true, //Is the skip button should be display
+        showSkipButton: false, //Is the skip button should be display
         skip: const Icon(Icons.skip_next),
         next: const Icon(Icons.forward),
-        done: CustomText(text: 'Done', size: .091,),
+        showDoneButton: false,
+     //   done: CustomText(text: 'Done', size: .091,),
 
         dotsDecorator: DotsDecorator(
             size: const Size.square(10.0),

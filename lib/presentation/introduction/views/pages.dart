@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hidratese/infrastructure/theme/dark/theme_dark.dart';
 import 'package:hidratese/infrastructure/theme/light/theme_light.dart';
-import 'package:hidratese/presentation/introduction/views/profile_user_view.dart';
+import 'package:hidratese/presentation/profile_user/profile_user_view.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 

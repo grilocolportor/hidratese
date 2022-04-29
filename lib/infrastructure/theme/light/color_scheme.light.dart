@@ -4,7 +4,7 @@ import 'package:hidratese/infrastructure/utils/utils.dart';
 final colorSchemeLight = ColorScheme.light(
     primary: Colors.white,
     secondary: Color(Utils.getColorFromHex('#173447')),
-    tertiary: Colors.blueAccent);
+    tertiary: Colors.lightBlue);
 
 final textStyleWhite = TextStyle(
   color: colorSchemeLight.secondary,
@@ -27,4 +27,14 @@ final textThemeLight = TextTheme(
 
 final textButtonThemeLight = TextButtonThemeData(
   style: TextButton.styleFrom(primary: colorSchemeLight.tertiary),
+);
+
+final outLineBorderLight = OutlinedButtonThemeData(
+  style: TextButton.styleFrom(
+      side: BorderSide(color: colorSchemeLight.tertiary, width: 1)),
+);
+
+final textSelectionThemeLight = TextSelectionThemeData(
+  cursorColor: colorSchemeLight.tertiary,
+  selectionColor: Colors.blue.shade200,
 );

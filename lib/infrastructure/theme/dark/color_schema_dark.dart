@@ -4,7 +4,7 @@ import 'package:hidratese/infrastructure/utils/utils.dart';
 final colorSchemeDark = ColorScheme.dark(
   primary: Color(Utils.getColorFromHex('#173447')),
   secondary: Colors.white,
-  tertiary: Colors.blueAccent
+  tertiary: Colors.lightBlue
 );
 
 final textStyleDark = TextStyle(color: colorSchemeDark.secondary);
@@ -27,3 +27,14 @@ final textThemeDark = TextTheme(
 final textButtonThemeDark = TextButtonThemeData(
   style: TextButton.styleFrom(primary: colorSchemeDark.tertiary),
 );
+
+final outLineBorderDrak = OutlinedButtonThemeData(
+  style: TextButton.styleFrom(
+      side: BorderSide(color: colorSchemeDark.tertiary, width: 1)),
+);
+
+final textSelectionThemeDark = TextSelectionThemeData(
+  cursorColor: colorSchemeDark.tertiary,
+  selectionColor: Colors.blue.shade200,
+);
+

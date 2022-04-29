@@ -3,9 +3,8 @@ import 'package:flutter_switch/flutter_switch.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
-
-import 'controllers/profile_user_controller.dart';
 
 class ProfileUserView extends GetView<ProfileUserController> {
   final _perfilController = Get.find<ProfileUserController>();
@@ -116,7 +115,7 @@ class ProfileUserView extends GetView<ProfileUserController> {
                   Expanded(
                     child: TextField(
                         readOnly: true,
-                         style: GoogleFonts.quicksand(
+                        style: GoogleFonts.quicksand(
                             textStyle: Theme.of(context).textTheme.headline1,
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
@@ -127,11 +126,17 @@ class ProfileUserView extends GetView<ProfileUserController> {
                   ),
                 ],
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Center(
-                child: TextButton(
+                child: OutlinedButton(
                   child: CustomText(text: 'Adcionar'),
-                  onPressed: ()=> _perfilController.addPerfil(),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0))),
+                  ),
+                  onPressed: () => _perfilController.addPerfil(),
                 ),
               )
             ],
