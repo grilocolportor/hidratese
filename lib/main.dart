@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
@@ -7,17 +8,11 @@ import 'package:hidratese/infrastructure/navigation/bindings/controller.binding.
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
 
-// final container = KiwiContainer()
-//   ..registerFactory((container) => UserProfileUserCase(container.resolve()))
-//   ..registerFactory<IUserProfileRepository>(
-//       (container) => UserProfileRepositoryImpl(container.resolve()))
-//   ..registerFactory<IUserProfileDataSource>((container) => DatabaseHelper());
-
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding =WidgetsFlutterBinding.ensureInitialized();
   Injector.setup();
   var initialRoute = await Routes.initialRoute;
-//  Injector.setup();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(Main(initialRoute));
 }
 
@@ -31,7 +26,6 @@ class Main extends StatelessWidget {
       initialRoute: initialRoute,
       getPages: Nav.routes,
       initialBinding: ControllerBinding(),
-     
     );
   }
 }

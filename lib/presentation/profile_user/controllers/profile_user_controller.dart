@@ -42,14 +42,23 @@ class ProfileUserController extends GetxController {
   Future<void> getPerfil() async {
     var result = await _profileUserCase.getUser('user');
 
-    var l = result.fold((l) => l.message, (r) => r);
-    print(l);
+    result.fold((l) {
+      print(l.message);
+     
+    }, (r) {
+      
+    });
   }
 
-  Future<void> getCountUserProfile() async {
+  Future<int> getCountUserProfile() async {
     var result = await _profileUserCase.rowCounterUser('user');
-    var l = result.fold((l) => l.message, (r) => r);
-    print(l);
+
+   return result.fold((l) {
+      print(l.message);
+      return 0;
+    }, (r) {
+      return r;
+    });
   }
 
   Future<void> addPerfil() async {
