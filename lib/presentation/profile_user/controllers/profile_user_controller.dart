@@ -85,10 +85,5 @@ class ProfileUserController extends GetxController {
     //liter: (peso.value * coeficientePadrao).toString()
   }
 
-  @override
-  void onClose() {
-    pesoEditController.dispose();
-    dormirEditController.dispose();
-    acordarEditController.dispose();
-  }
+ 
 }

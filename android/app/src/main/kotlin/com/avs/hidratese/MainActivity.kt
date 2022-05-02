@@ -76,7 +76,7 @@ class MainActivity : FlutterActivity() {
             if (c != null) {
                 if (c.moveToFirst()) {
                     while (!c.isAfterLast) {
-                        Log.d("Perfil", c.getString(5))
+                        Log.d("Perfil", c.getString(0))
                             c.moveToNext()
                     }
                 }
