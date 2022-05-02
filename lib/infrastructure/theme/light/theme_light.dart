@@ -6,4 +6,6 @@ final themeDatalight = ThemeData.light().copyWith(
     scaffoldBackgroundColor: colorSchemeLight.primary,
     textButtonTheme: textButtonThemeLight,
     outlinedButtonTheme: outLineBorderLight, 
-    textSelectionTheme: textSelectionThemeLight);
+    textSelectionTheme: textSelectionThemeLight,
+    appBarTheme: appBarLight
+    );

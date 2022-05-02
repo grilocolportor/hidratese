@@ -127,7 +127,7 @@ class ProfileUserView extends GetView<ProfileUserController> {
                 ],
               ),
               SizedBox(
-                height: 20,
+                height: 30
               ),
               Center(
                 child: OutlinedButton(

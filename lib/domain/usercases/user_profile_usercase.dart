@@ -1,9 +1,13 @@
 import 'package:dartz/dartz.dart';
+import 'package:hidratese/domain/entities/user_profile.dart';
 import 'package:hidratese/domain/execeptions/user_profile_exceptions.dart';
 import 'package:hidratese/domain/repositories/user_profile_repository_interface.dart';
 
 abstract class IUserProfileUserCase {
-  Future<Either<UserProfilesExceptions, int>> call(UserProfileParams params);
+  Future<Either<UserProfilesExceptions, int>> insertUser(UserProfileParams params);
+   Future<Either<UserProfilesExceptions, int?>> rowCounterUser(UserProfileParams params);
+  Future<Either<UserProfilesExceptions, List<UserProfile>>> getUser(
+      String table);
 }
 
 class UserProfileUserCase implements IUserProfileUserCase {
@@ -12,7 +16,7 @@ class UserProfileUserCase implements IUserProfileUserCase {
   UserProfileUserCase(this._repository);
 
   @override
-  Future<Either<UserProfilesExceptions, int>> call(
+  Future<Either<UserProfilesExceptions, int>> insertUser(
       UserProfileParams params) async {
     if (params.wakeUp!.isEmpty) {
       return Left(throw UserProfilesExceptions('Weight cannot be empty'));
@@ -22,6 +26,17 @@ class UserProfileUserCase implements IUserProfileUserCase {
     } else {
       return await _repository.registerUser(params);
     }
+  }
+
+  @override
+  Future<Either<UserProfilesExceptions, List<UserProfile>>> getUser(
+      String table) async {
+    return await _repository.getLocalUserProfile(table);
+  }
+
+  @override
+  Future<Either<UserProfilesExceptions, int>> rowCounterUser(UserProfileParams params) {
+    return await _repository.getRowUserProfileCoubnt(table);
   }
 }
 

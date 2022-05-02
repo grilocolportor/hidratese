@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/domain/usercases/user_profile_usercase.dart';
-import 'package:hidratese/infrastructure/utils/contants.dart';
 
 class ProfileUserController extends GetxController {
   final _profileUserCase = Injector.resolve<UserProfileUserCase>();
@@ -40,6 +39,13 @@ class ProfileUserController extends GetxController {
     }
   }
 
+  Future<void> getPerfil() async {
+    var result = await _profileUserCase.getUser('user');
+
+    var l = result.fold((l) => l.message, (r) => r);
+    print(l);
+  }
+
   Future<void> addPerfil() async {
     // await _hidrateseControler.gerarRelatorio();
 
@@ -54,18 +60,14 @@ class ProfileUserController extends GetxController {
       wakeUp: dormir.value,
     );
 
-
-     //liter: (peso.value * coeficientePadrao).toString()
-
     var resultInsert = ''.obs;
-
-    await _profileUserCase.call(_userProfileParam).then((value) {
+    await _profileUserCase.insertUser(_userProfileParam).then((value) {
       if (value.isRight()) {
         resultInsert.value = 'Usuario adcionado';
       } else {}
     });
 
-    print('------------${resultInsert.value}');
+    //liter: (peso.value * coeficientePadrao).toString()
   }
 
   @override

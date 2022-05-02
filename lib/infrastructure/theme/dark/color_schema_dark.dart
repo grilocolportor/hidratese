@@ -38,3 +38,8 @@ final textSelectionThemeDark = TextSelectionThemeData(
   selectionColor: Colors.blue.shade200,
 );
 
+
+final appBarDark= AppBarTheme(
+  backgroundColor: colorSchemeDark.primary,
+  elevation: 0
+);

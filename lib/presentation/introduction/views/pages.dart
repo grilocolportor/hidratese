@@ -51,9 +51,13 @@ class FirstPage extends StatelessWidget {
       children: [
         Center(
           child: Container(
-              child: CustomText(
-                  text:
-                      ' Beber água pode ter diversos benefícios para a saúde, uma vez que é essencial para várias funções no corpo. Além de ajudar a manter a pele e cabelos saudáveis e ajudar a regular o intestino, diminuindo a prisão de ventre, manter uma boa ingestão de líquidos também tem outros benefícios para o equilíbrio do organismo que são muito importantes para a manutenção da saúde em geral.')),
+              child: Center(
+            child: CustomText(
+              text:
+                  ' Beber água pode ter diversos benefícios para a saúde, uma vez que é essencial para várias funções no corpo. Além de ajudar a manter a pele e cabelos saudáveis e ajudar a regular o intestino, diminuindo a prisão de ventre, manter uma boa ingestão de líquidos também tem outros benefícios para o equilíbrio do organismo que são muito importantes para a manutenção da saúde em geral.',
+              align: TextAlign.center,
+            ),
+          )),
         ),
         TextButton(
             onPressed: () {

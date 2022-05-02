@@ -7,5 +7,6 @@ final  themeDataDark = ThemeData.dark().copyWith(
   textButtonTheme: textButtonThemeDark,
   outlinedButtonTheme: outLineBorderDrak, 
     textSelectionTheme: textSelectionThemeDark,
+    appBarTheme: appBarDark
 );
 

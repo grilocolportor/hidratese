@@ -38,3 +38,8 @@ final textSelectionThemeLight = TextSelectionThemeData(
   cursorColor: colorSchemeLight.tertiary,
   selectionColor: Colors.blue.shade200,
 );
+
+final appBarLight = AppBarTheme(
+  backgroundColor: colorSchemeLight.primary,
+  elevation: 0
+);

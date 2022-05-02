@@ -11,4 +11,14 @@ class LocalDataBase implements IUserProfileDataSource {
   Future<int> registerLocalUserProfile(UserProfileParams params) async {
     return await _dataBaseHelper.insert(params.toMap(), 'User');
   }
+
+  @override
+  Future<List<Map<String, dynamic>>> getLocalUserProfile(String table ) async{
+    return await _dataBaseHelper.queryAllRows(table);
+  }
+
+  @override
+  Future<int?> rowCountUserProfile(String table) async {
+    return await _dataBaseHelper.queryRowCount(table);
+  }
 }

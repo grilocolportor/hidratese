@@ -1,5 +1,3 @@
-import 'package:dartz/dartz.dart';
-import 'package:hidratese/domain/execeptions/sql_exception.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class ISQLDataBaseHelper {
@@ -46,12 +44,14 @@ class DatabaseHelper implements ISQLDataBaseHelper {
     return await db.insert(table, row);
   }
 
+  @override
   Future<int> insertDayleTarget(Map<String, dynamic> row, String table) async {
     Database db = await instance.database;
     return await db.insert(table, row);
   }
 
   // Esse método usa uma consulta bruta para fornecer a contagem de linhas.
+  @override
   Future<int?> queryRowCount(String table) async {
     Database db = await instance.database;
     return Sqflite.firstIntValue(
@@ -59,12 +59,14 @@ class DatabaseHelper implements ISQLDataBaseHelper {
   }
 
   // uma lista de valores-chave de colunade users.
+  @override
   Future<List<Map<String, dynamic>>> queryAllRows(String table) async {
     Database db = await instance.database;
     return await db.query(table);
   }
 
   // uma lista de valores pela data users.
+  @override
   Future<List<Map<String, dynamic>>> queryAllRowsByDate(
       String table, String date) async {
     Database db = await instance.database;
@@ -112,6 +114,7 @@ class DatabaseHelper implements ISQLDataBaseHelper {
   }
 
   // valores das colunas serão usados para atualizar a linha.
+  @override
   Future<int> update(Map<String, dynamic> row, int id, String table) async {
     Database db = await instance.database;
     return await db.update(table, row, where: '$id = ?', whereArgs: [id]);
@@ -119,6 +122,7 @@ class DatabaseHelper implements ISQLDataBaseHelper {
 
   // Exclui a linha especificada pelo id. O número de linhas afetadas é
   // retornada. Isso deve ser igual a 1, contanto que a linha exista.
+  @override
   Future<int> delete(int id, String table) async {
     Database db = await instance.database;
     return await db.delete(table, where: '$id = ?', whereArgs: [id]);
