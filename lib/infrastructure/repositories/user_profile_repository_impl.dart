@@ -45,5 +45,6 @@ class UserProfileRepositoryImpl implements IUserProfileRepository {
   @override
   Future<int?> getRowUserProfileCoubnt(String table) async {
     var result = await _profileDataSource.rowCountUserProfile(table);
+    return result;
   }
 }

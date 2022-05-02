@@ -46,6 +46,12 @@ class ProfileUserController extends GetxController {
     print(l);
   }
 
+  Future<void> getCountUserProfile() async {
+    var result = await _profileUserCase.rowCounterUser('user');
+    var l = result.fold((l) => l.message, (r) => r);
+    print(l);
+  }
+
   Future<void> addPerfil() async {
     // await _hidrateseControler.gerarRelatorio();
 

@@ -136,7 +136,7 @@ class ProfileUserView extends GetView<ProfileUserController> {
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0))),
                   ),
-                  onPressed: () => _perfilController.addPerfil(),
+                  onPressed: () => _perfilController.getCountUserProfile(),
                 ),
               )
             ],

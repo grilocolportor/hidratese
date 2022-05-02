@@ -4,8 +4,9 @@ import 'package:hidratese/domain/execeptions/user_profile_exceptions.dart';
 import 'package:hidratese/domain/repositories/user_profile_repository_interface.dart';
 
 abstract class IUserProfileUserCase {
-  Future<Either<UserProfilesExceptions, int>> insertUser(UserProfileParams params);
-   Future<Either<UserProfilesExceptions, int?>> rowCounterUser(UserProfileParams params);
+  Future<Either<UserProfilesExceptions, int>> insertUser(
+      UserProfileParams params);
+  Future<Either<UserProfilesExceptions, int?>> rowCounterUser(String table);
   Future<Either<UserProfilesExceptions, List<UserProfile>>> getUser(
       String table);
 }
@@ -35,8 +36,14 @@ class UserProfileUserCase implements IUserProfileUserCase {
   }
 
   @override
-  Future<Either<UserProfilesExceptions, int>> rowCounterUser(UserProfileParams params) {
-    return await _repository.getRowUserProfileCoubnt(table);
+  Future<Either<UserProfilesExceptions, int>> rowCounterUser(
+      String table) async {
+    var result = await _repository.getRowUserProfileCoubnt(table);
+    if (result == 0) {
+      return Left(UserProfilesExceptions('Usuario não econtrado'));
+    } else {
+      return Right(result!);
+    }
   }
 }
 
