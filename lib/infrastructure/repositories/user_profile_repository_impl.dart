@@ -30,7 +30,7 @@ class UserProfileRepositoryImpl implements IUserProfileRepository {
 
     List<UserProfile> _listUserProfile = [];
 
-    if (!result.isEmpty) {
+    if (result.isNotEmpty) {
       for (var element in result) {
         var _userProfile = UserProfile.fromJson(element);
         _listUserProfile.add(_userProfile);

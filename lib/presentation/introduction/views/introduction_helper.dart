@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hidratese/presentation/widgets/custom_text.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import 'pages.dart';

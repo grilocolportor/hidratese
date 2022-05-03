@@ -5,7 +5,6 @@ import 'package:hidratese/external/local_repository/sql_lite/database_helper.dar
 import 'package:hidratese/external/local_repository/local_database.dart';
 import 'package:hidratese/infrastructure/repositories/daos/user_profile_datasource.dart';
 import 'package:hidratese/infrastructure/repositories/user_profile_repository_impl.dart';
-import 'package:hidratese/infrastructure/utils/utils.dart';
 import 'package:kiwi/kiwi.dart';
 
 abstract class Injector {
