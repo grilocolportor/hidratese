@@ -12,13 +12,14 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" 
             android:hardwareAccelerated="true" 
             android:launchMode="singleTop" 
-            android:theme="@style/LaunchTheme" 
+            android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize" 
             android:exported="true"
             android:showWhenLocked="true"
             android:turnScreenOn="true">
+            android:theme="@style/AppThemeBase"
 
-            <meta-data android:name="io.flutter.embedding.android.NormalTheme" android:resource="@style/NormalTheme" />
+            <meta-data android:name="io.flutter.embedding.android.LaunchTheme" android:resource="@style/LaunchTheme" />
 
            
             <intent-filter>

@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/infrastructure/navigation/bindings/controller.binding.dart';
+import 'package:hidratese/infrastructure/theme/dark/theme_dark.dart';
 
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
@@ -26,6 +27,8 @@ class Main extends StatelessWidget {
       initialRoute: initialRoute,
       getPages: Nav.routes,
       initialBinding: ControllerBinding(),
+      theme:themeDataDark ,
+      darkTheme: themeDataDark,
     );
   }
 }
