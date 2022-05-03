@@ -42,6 +42,8 @@ class DatabaseHandler (context: Context): SQLiteOpenHelper(context,DATABASE_NAME
         private val KEY_WEATHER_HUMIDITY = "weather_humidity"
         private val KEY_LIFE_STYLE = "life_style"
 
+
+        //table param by day 
         private val TABLE_DAYLE_CHECK = "Dayle_check"
         private val TABLE_DAYLE_CHECK_ID = "Dayle_check_id"
         private val KEY_DATE_CHECK = "date"
