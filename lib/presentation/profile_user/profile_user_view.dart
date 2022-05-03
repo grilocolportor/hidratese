@@ -22,10 +22,11 @@ class ProfileUserView extends GetView<ProfileUserController> {
         });
     if (time != null) {
       var h = time.hour > 10
+          // ignore: unnecessary_string_interpolations
           ? '${time.hour.toString()}'
           : '0${time.hour.toString()}';
       var m = time.minute > 10
-          ? '${time.minute.toString()}'
+          ? time.minute.toString()
           : '0${time.minute.toString()}';
       _perfilController.updateTime(modo, h, m);
     }

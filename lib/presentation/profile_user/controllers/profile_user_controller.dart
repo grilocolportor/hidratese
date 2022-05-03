@@ -14,15 +14,7 @@ class ProfileUserController extends GetxController {
   var acordar = ''.obs;
   var dormir = ''.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   void updateTime(String modo, var h, var m) {
     switch (modo) {
