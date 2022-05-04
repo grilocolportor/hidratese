@@ -80,8 +80,8 @@ class ProfileUserView extends GetView<ProfileUserController> {
                     child: Slider(
                       value: _perfilController.peso.value,
                       min: 0,
-                      max: 120,
-                      divisions: 120,
+                      max: 200,
+                      divisions: 200,
                       label: _perfilController.peso.value.round().toString(),
                       onChanged: (value) {
                         _perfilController.peso.value = value;

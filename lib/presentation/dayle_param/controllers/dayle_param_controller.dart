@@ -1,20 +1,11 @@
 import 'package:get/get.dart';
 
 class DayleParamController extends GetxController {
-  //TODO: Implement DayleParamController
+  var humidade = 50.obs;
+  var temperatura = 28.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
+ 
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }
