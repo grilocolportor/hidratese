@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:hidratese/presentation/widgets/custom_text.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import 'pages.dart';
 
 class IntroductioHelper extends StatelessWidget {
-  const IntroductioHelper({ Key? key }) : super(key: key);
+  const IntroductioHelper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),      
+      appBar: AppBar(),
       body: SizedBox(
         child: IntroductionScreen(
-          scrollPhysics: const BouncingScrollPhysics(), //Default is BouncingScrollPhysics
+          scrollPhysics:
+              const BouncingScrollPhysics(), //Default is BouncingScrollPhysics
           pages: Pages.pageViews,
-            //List of PageViewModel
-          
+          //List of PageViewModel
+
           rawPages: [
             //If you don't want to use PageViewModel you can use this
           ],
           //If you provide both rawPages and pages parameter, pages will be used.
-          onChange: (e){
+          onChange: (e) {
+            print('------------------$e');
             // When something changes
           },
           onDone: () {
@@ -29,12 +32,18 @@ class IntroductioHelper extends StatelessWidget {
           onSkip: () {
             // You can also override onSkip callback
           },
-          
+          next: CustomText(text: 'Próximo'),
+          // overrideNext: TextButton(
+          //         child: CustomText(text: 'Próximo' ),
+
+          //         onPressed: () {  },
+          //        // onPressed: () => _perfilController.addPerfil(),
+          //       ),
           showSkipButton: false, //Is the skip button should be display
           skip: const Icon(Icons.skip_next),
-          next: const Icon(Icons.forward),
+          // next: const Icon(Icons.forward),
           showDoneButton: false,
-     //   done: CustomText(text: 'Done', size: .091,),
+          //   done: CustomText(text: 'Done', size: .091,),
 
           dotsDecorator: DotsDecorator(
               size: const Size.square(10.0),

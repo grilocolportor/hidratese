@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hidratese/infrastructure/theme/theme_service.dart';
+import 'package:hidratese/infrastructure/utils/contants.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 
 import '../controllers/dayle_param_controller.dart';
@@ -35,14 +37,19 @@ class DayleParamView extends GetView<DayleParamController> {
                       min: -30,
                       max: 50,
                       divisions: 80,
-                      label:  _dayleParamController.temperatura.value.round().toString(),
+                      label: _dayleParamController.temperatura.value
+                          .round()
+                          .toString(),
                       onChanged: (value) {
-                         _dayleParamController.temperatura.value = value.toInt();
+                        _dayleParamController.temperatura.value = value.toInt();
                       },
                     ),
                   ),
                   CustomText(
-                      text:  _dayleParamController.temperatura.value.round().toString()+ 'C')
+                      text: _dayleParamController.temperatura.value
+                              .round()
+                              .toString() +
+                          'C')
                 ],
               ),
 
@@ -57,26 +64,45 @@ class DayleParamView extends GetView<DayleParamController> {
                       min: 0,
                       max: 100,
                       divisions: 100,
-                      label: _dayleParamController.humidade.value.round().toString(),
+                      label: _dayleParamController.humidade.value
+                          .round()
+                          .toString(),
                       onChanged: (value) {
                         _dayleParamController.humidade.value = value.toInt();
                       },
                     ),
                   ),
                   CustomText(
-                      text: _dayleParamController.humidade.value.round().toString() + '%')
+                      text: _dayleParamController.humidade.value
+                              .round()
+                              .toString() +
+                          '%')
                 ],
               ),
-              SizedBox(height: 30),
-              Center(
-                child: OutlinedButton(
-                  child: CustomText(text: 'Adcionar'),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0))),
-                  ), onPressed: () {  },
-                 // onPressed: () => _perfilController.addPerfil(),
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(text: 'Estilo de Vida: '),
+                  DropdownButton(
+                      value: _dayleParamController.estiloVida.value,
+                      items: <String>[
+                        'Normal',
+                        'Sendentário',
+                        'Ativo',
+                        'Muito Ativo'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: CustomText(
+                            text: value,
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (v) {
+                        _dayleParamController.changeDropDownLigeStyle(v.toString());
+                      })
+                ],
               )
             ],
           ),

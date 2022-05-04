@@ -130,16 +130,7 @@ class ProfileUserView extends GetView<ProfileUserController> {
               SizedBox(
                 height: 30
               ),
-              Center(
-                child: OutlinedButton(
-                  child: CustomText(text: 'Adcionar'),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0))),
-                  ),
-                  onPressed: () => _perfilController.addPerfil(),
-                ),
-              )
+              
             ],
           ),
         ));
