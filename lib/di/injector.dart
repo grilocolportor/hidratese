@@ -1,9 +1,15 @@
+import 'package:hidratese/domain/entities/dayle_params.dart';
 import 'package:hidratese/domain/entities/user_profile.dart';
+import 'package:hidratese/domain/repositories/dayle_param_param_repository_interface.dart';
 import 'package:hidratese/domain/repositories/user_profile_repository_interface.dart';
+import 'package:hidratese/domain/usercases/dayle_params_usercase.dart';
 import 'package:hidratese/domain/usercases/user_profile_usercase.dart';
+import 'package:hidratese/external/local_repository/local_database_dayle_param.dart';
+import 'package:hidratese/external/local_repository/local_database_user_profile.dart';
 import 'package:hidratese/external/local_repository/sql_lite/database_helper.dart';
-import 'package:hidratese/external/local_repository/local_database.dart';
+import 'package:hidratese/infrastructure/repositories/daos/dayle_param_datasource.dart';
 import 'package:hidratese/infrastructure/repositories/daos/user_profile_datasource.dart';
+import 'package:hidratese/infrastructure/repositories/dayle_params_repository_impl.dart';
 import 'package:hidratese/infrastructure/repositories/user_profile_repository_impl.dart';
 import 'package:kiwi/kiwi.dart';
 
@@ -17,7 +23,15 @@ abstract class Injector {
       ..registerFactory<IUserProfileRepository>(
           (container) => UserProfileRepositoryImpl(container.resolve()))
       ..registerFactory<IUserProfileDataSource>(
-          (container) => LocalDataBase(container.resolve()))
+          (container) => LocalDataBaseUserProfile(container.resolve()))
+
+      ..registerFactory((container) => DayleParams())
+      ..registerFactory((container) => DayleParamUserCase(container.resolve()))
+      ..registerFactory<IDayleParamRespository>(
+          (container) => DayleParamsReppsitoryImpl(container.resolve()))
+      ..registerFactory<IDayleParamDatasource>(
+          (container) => LocalDataBaseDayleParams(container.resolve()))
+          
       ..registerFactory<ISQLDataBaseHelper>(
           (container) => DatabaseHelper.instance);
   }

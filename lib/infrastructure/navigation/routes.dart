@@ -8,4 +8,5 @@ class Routes {
   static const HOME = '/home';
   static const INTRODUCTION = '/introduction';
   static const OMBOARDING = '/omboarding';
+   static const DAYLE_PARAM = '/dayle-param';
 }

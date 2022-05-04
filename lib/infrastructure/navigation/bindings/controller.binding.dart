@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:hidratese/presentation/dayle_param/controllers/dayle_param_controller.dart';
 import 'package:hidratese/presentation/introduction/controllers/introduction_controller.dart';
 import 'package:hidratese/presentation/omboarding/controllers/omboarding_controller.dart';
 import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
@@ -21,6 +22,9 @@ class ControllerBinding extends Bindings {
     );
     Get.lazyPut<OmboardingController>(
       () => OmboardingController(),
+    );
+    Get.lazyPut<DayleParamController>(
+      () => DayleParamController(),
     );
   }
 }
