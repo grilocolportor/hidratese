@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class DayleParams {
   final int? dayleParamsId;
   final DateTime? data;
@@ -26,12 +24,12 @@ class DayleParams {
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> jsonData = {
-      'dayleParamsId' : dayleParamsId,
-      'data' : data,
-      'peso' : peso,
-      'temperatura' : temperatura,
-      'humidade' : humidade,
-      'lifeStyle' : lifeStyle
+      'dayleParamsId': dayleParamsId,
+      'data': data,
+      'peso': peso,
+      'temperatura': temperatura,
+      'humidade': humidade,
+      'lifeStyle': lifeStyle
     };
     return jsonData;
   }

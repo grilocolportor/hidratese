@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:hidratese/infrastructure/theme/theme_service.dart';
-import 'package:hidratese/infrastructure/utils/contants.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 
 import '../controllers/dayle_param_controller.dart';
@@ -20,12 +18,6 @@ class DayleParamView extends GetView<DayleParamController> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              // CustomText(
-              //     text:
-              //         'Estas informações serão gravadas apenas em seu dispositivo'),
-              // SizedBox(
-              //   height: 45,
-              // ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,7 +44,6 @@ class DayleParamView extends GetView<DayleParamController> {
                           'C')
                 ],
               ),
-
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,7 +91,8 @@ class DayleParamView extends GetView<DayleParamController> {
                         );
                       }).toList(),
                       onChanged: (v) {
-                        _dayleParamController.changeDropDownLigeStyle(v.toString());
+                        _dayleParamController
+                            .changeDropDownLigeStyle(v.toString());
                       })
                 ],
               )

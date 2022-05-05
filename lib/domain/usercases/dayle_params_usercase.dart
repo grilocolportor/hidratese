@@ -21,11 +21,11 @@ class DayleParamUserCase implements IDayleParamUserCase {
 
 class DayleParamsParams {
   final int? dayleParamsId;
-  final DateTime? data;
+  final String? data;
   final double? peso;
   final int? temperatura;
   final int? humidade;
-  final int? lifeStyle;
+  final String? lifeStyle;
 
   DayleParamsParams(
       {this.dayleParamsId,

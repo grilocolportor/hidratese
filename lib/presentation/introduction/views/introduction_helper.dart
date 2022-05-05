@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -9,6 +11,7 @@ class IntroductioHelper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _profile = Get.find<ProfileUserController>();
     return Scaffold(
       appBar: AppBar(),
       body: SizedBox(
@@ -23,17 +26,18 @@ class IntroductioHelper extends StatelessWidget {
           ],
           //If you provide both rawPages and pages parameter, pages will be used.
           onChange: (e) {
-           // print('------------------$e');
+            // print('------------------$e');
             // When something changes
           },
-          onDone: () {
+          onDone: () async {
             print('Alguma coisa');
+            await _profile.addPerfil();
           },
           onSkip: () {
             // You can also override onSkip callback
           },
           next: CustomText(text: 'Próximo'),
-          
+
           showSkipButton: false, //Is the skip button should be display
           skip: const Icon(Icons.skip_next),
           // next: const Icon(Icons.forward),
