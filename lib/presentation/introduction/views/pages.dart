@@ -76,14 +76,6 @@ class FirstPage extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
-              // if (Get.isDarkMode) {
-              //   Get.changeThemeMode(ThemeMode.light);
-              // }else{
-              //   Get.changeThemeMode(ThemeMode.dark);
-              // }
-              // Get.changeTheme(
-              //   Get.isDarkMode ? themeDatalight : themeDataDark,
-              // );
               ThemeService().switchTheme();
             },
             child: Text('Click aAqui'))

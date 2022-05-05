@@ -23,27 +23,22 @@ class IntroductioHelper extends StatelessWidget {
           ],
           //If you provide both rawPages and pages parameter, pages will be used.
           onChange: (e) {
-            print('------------------$e');
+           // print('------------------$e');
             // When something changes
           },
           onDone: () {
-            // When done button is press
+            print('Alguma coisa');
           },
           onSkip: () {
             // You can also override onSkip callback
           },
           next: CustomText(text: 'Próximo'),
-          // overrideNext: TextButton(
-          //         child: CustomText(text: 'Próximo' ),
-
-          //         onPressed: () {  },
-          //        // onPressed: () => _perfilController.addPerfil(),
-          //       ),
+          
           showSkipButton: false, //Is the skip button should be display
           skip: const Icon(Icons.skip_next),
           // next: const Icon(Icons.forward),
-          showDoneButton: false,
-          //   done: CustomText(text: 'Done', size: .091,),
+          //showDoneButton: false,
+          done: CustomText(text: 'Finalizar'),
 
           dotsDecorator: DotsDecorator(
               size: const Size.square(10.0),
