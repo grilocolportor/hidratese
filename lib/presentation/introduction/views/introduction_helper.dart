@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hidratese/infrastructure/navigation/routes.dart';
 import 'package:hidratese/presentation/dayle_param/controllers/dayle_param_controller.dart';
+import 'package:hidratese/presentation/home/views/home.screen.dart';
 import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -15,7 +17,6 @@ class IntroductioHelper extends StatelessWidget {
     final _param = Get.find<DayleParamController>();
     final _perfilController = Get.put(ProfileUserController());
 
-    
     return Scaffold(
       appBar: AppBar(),
       body: SizedBox(
@@ -40,6 +41,7 @@ class IntroductioHelper extends StatelessWidget {
             await _param.addLifeStyle();
             await _param.addHumidade();
             await _param.addTemperatura();
+            Get.off(() => HomeScreen());
           },
           onSkip: () {
             // You can also override onSkip callback

@@ -12,19 +12,19 @@ class ControllerBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<HomeController>(
-      () => HomeController(),
+      () => HomeController(), fenix: true
     );
     Get.lazyPut<IntroductionController>(
-      () => IntroductionController(),
+      () => IntroductionController(),fenix: true
     );
     Get.lazyPut<ProfileUserController>(
-      () => ProfileUserController(),
+      () => ProfileUserController(),fenix: true
     );
     Get.lazyPut<OmboardingController>(
-      () => OmboardingController(),
+      () => OmboardingController(),fenix: true
     );
     Get.lazyPut<DayleParamController>(
-      () => DayleParamController(),
+      () => DayleParamController(),fenix: true
     );
   }
 }
