@@ -12,8 +12,10 @@ class IntroductioHelper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _profile = Get.find<ProfileUserController>();
-    var _param = Get.find<DayleParamController>();
+    final _param = Get.find<DayleParamController>();
+    final _perfilController = Get.put(ProfileUserController());
+
+    
     return Scaffold(
       appBar: AppBar(),
       body: SizedBox(
@@ -33,8 +35,11 @@ class IntroductioHelper extends StatelessWidget {
           },
           onDone: () async {
             print('Alguma coisa');
-            await _profile.addPerfil();
+            await _perfilController.addPerfil();
             await _param.addPeso();
+            await _param.addLifeStyle();
+            await _param.addHumidade();
+            await _param.addTemperatura();
           },
           onSkip: () {
             // You can also override onSkip callback

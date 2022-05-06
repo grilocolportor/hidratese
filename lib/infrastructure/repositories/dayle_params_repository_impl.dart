@@ -11,15 +11,28 @@ class DayleParamsReppsitoryImpl implements IDayleParamRespository {
 
   @override
   Future<Either<GeneralExcepion, int>> registerPeso(PesoParam param) async {
-     int a = await _dayleParamDatasource.resgisterPeso(param);
-      return Right(a);
+    int a = await _dayleParamDatasource.resgisterPeso(param);
+    return Right(a);
   }
 
+  @override
+  Future<Either<GeneralExcepion, int>> registerEstiloVida(
+      LifeStyleParam param) async {
+    int a = await _dayleParamDatasource.resgisterEstiloVida(param);
+    return Right(a);
+  }
 
+  @override
+  Future<Either<GeneralExcepion, int>> registerHumidade(
+      HumidadeParam param) async {
+    int a = await _dayleParamDatasource.resgisterHumidade(param);
+    return Right(a);
+  }
 
-  // @override
-  // Future<Either<GeneralExcepion, int>> registerDaylePram(DayleParamsParams params) async {
-  //   int a = await _dayleParamDatasource.registerDayleParams(params);
-  //   return Right(a);
-  // }
+  @override
+  Future<Either<GeneralExcepion, int>> registerTemperatura(
+      TemperaturaParam param) async {
+    int a = await _dayleParamDatasource.resgisterTemperatura(param);
+    return Right(a);
+  }
 }

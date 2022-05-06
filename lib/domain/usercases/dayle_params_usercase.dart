@@ -4,6 +4,11 @@ import 'package:hidratese/domain/repositories/dayle_param_param_repository_inter
 
 abstract class IDayleParamUserCase {
   Future<Either<GeneralExcepion, int>> registerPeso(PesoParam params);
+  Future<Either<GeneralExcepion, int>> registerEstiloVida(
+      LifeStyleParam params);
+  Future<Either<GeneralExcepion, int>> registerTemperatura(
+      TemperaturaParam params);
+  Future<Either<GeneralExcepion, int>> registerHumidade(HumidadeParam params);
 }
 
 class DayleParamUserCase implements IDayleParamUserCase {
@@ -16,11 +21,23 @@ class DayleParamUserCase implements IDayleParamUserCase {
     return await _dayleParamRespository.registerPeso(params);
   }
 
-  // @override
-  // Future<Either<GeneralExcepion, int>> registerDaylePram(
-  //     DayleParamsParams params) async {
-  //   return await _dayleParamRespository.registerDaylePram(params);
-  // }
+  @override
+  Future<Either<GeneralExcepion, int>> registerEstiloVida(
+      LifeStyleParam params) async {
+    return await _dayleParamRespository.registerEstiloVida(params);
+  }
+
+  @override
+  Future<Either<GeneralExcepion, int>> registerHumidade(
+      HumidadeParam params) async {
+    return await _dayleParamRespository.registerHumidade(params);
+  }
+
+  @override
+  Future<Either<GeneralExcepion, int>> registerTemperatura(
+      TemperaturaParam params) async {
+    return await _dayleParamRespository.registerTemperatura(params);
+  }
 }
 
 class PesoParam {
@@ -41,7 +58,7 @@ class TemperaturaParam {
   final String? data;
   final String? temperatura;
 
-  TemperaturaParam(this.pesoId, this.data, this.temperatura);
+  TemperaturaParam({this.pesoId, this.data, this.temperatura});
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> jsonData = {'data': data, 'peso': temperatura};
@@ -54,7 +71,7 @@ class HumidadeParam {
   final String? data;
   final String? humidade;
 
-  HumidadeParam(this.pesoId, this.data, this.humidade);
+  HumidadeParam({this.pesoId, this.data, this.humidade});
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> jsonData = {'data': data, 'peso': humidade};
@@ -67,7 +84,7 @@ class LifeStyleParam {
   final String? data;
   final String? lifeStyle;
 
-  LifeStyleParam(this.pesoId, this.data, this.lifeStyle);
+  LifeStyleParam({this.pesoId, this.data, this.lifeStyle});
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> jsonData = {'data': data, 'peso': lifeStyle};

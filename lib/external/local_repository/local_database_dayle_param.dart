@@ -8,20 +8,35 @@ class LocalDataBaseDayleParams implements IDayleParamDatasource {
   LocalDataBaseDayleParams(this._databaseHelper);
 
   @override
-  Future<int> resgisterPeso(params) async{
-     Map<String, dynamic> pesoMap = {
-      'date' : params.date,
-      'peso' : params.peso
-    };
-     return await _databaseHelper.insert(pesoMap, 'peso');
+  Future<int> resgisterPeso(params) async {
+    Map<String, dynamic> pesoMap = {'date': params.date, 'peso': params.peso};
+    return await _databaseHelper.insert(pesoMap, 'peso');
   }
 
-  // @override
-  // Future<int> registerDayleParams(DayleParamsParams params) async {
-  //   Map<String, dynamic> humidadeMap = {
-  //     'data' : params.data,
-  //     'humidade' : params.humidade
-  //   };
-  //   return await _databaseHelper.insert(params.toMap(), 'User');
-  // }
+  @override
+  Future<int> resgisterEstiloVida(LifeStyleParam params) async {
+    Map<String, dynamic> map = {
+      'date': params.data,
+      'estilo_vida': params.lifeStyle
+    };
+    return await _databaseHelper.insert(map, 'estilo_vida');
+  }
+
+  @override
+  Future<int> resgisterHumidade(HumidadeParam params) async {
+    Map<String, dynamic> map = {
+      'date': params.data,
+      'humidade': params.humidade
+    };
+    return await _databaseHelper.insert(map, 'humidade');
+  }
+
+  @override
+  Future<int> resgisterTemperatura(TemperaturaParam params) async {
+    Map<String, dynamic> map = {
+      'date': params.data,
+      'temperatura': params.temperatura
+    };
+    return await _databaseHelper.insert(map, 'temperatura');
+  }
 }
