@@ -4,6 +4,7 @@ import 'package:hidratese/domain/repositories/dayle_param_param_repository_inter
 import 'package:hidratese/domain/repositories/user_profile_repository_interface.dart';
 import 'package:hidratese/domain/usercases/dayle_params_usercase.dart';
 import 'package:hidratese/domain/usercases/user_profile_usercase.dart';
+import 'package:hidratese/external/handler_native_code/handler_native_code.dart';
 import 'package:hidratese/external/local_repository/local_database_dayle_param.dart';
 import 'package:hidratese/external/local_repository/local_database_user_profile.dart';
 import 'package:hidratese/external/local_repository/sql_lite/database_helper.dart';
@@ -24,14 +25,17 @@ abstract class Injector {
           (container) => UserProfileRepositoryImpl(container.resolve()))
       ..registerFactory<IUserProfileDataSource>(
           (container) => LocalDataBaseUserProfile(container.resolve()))
-
+          
       ..registerFactory((container) => DayleParams())
       ..registerFactory((container) => DayleParamUserCase(container.resolve()))
       ..registerFactory<IDayleParamRespository>(
           (container) => DayleParamsReppsitoryImpl(container.resolve()))
       ..registerFactory<IDayleParamDatasource>(
           (container) => LocalDataBaseDayleParams(container.resolve()))
-          
+
+      ..registerSingleton<IHandlerNativeCode>(
+          (container) => HandlerNativeCode())
+
       ..registerFactory<ISQLDataBaseHelper>(
           (container) => DatabaseHelper.instance);
   }

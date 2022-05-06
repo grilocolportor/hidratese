@@ -1,28 +1,33 @@
 import 'package:flutter/services.dart';
 
-class HandlerNativeCode {
-  static final HandlerNativeCode _instance = HandlerNativeCode._internal();
+abstract class IHandlerNativeCode {
+  Future<void> onStartconfig();
+  Future<void> setPermission();
+  Future<void> setAutoStart();
+  Future<String> checkDeviceManufacturer();
+}
 
+class HandlerNativeCode implements IHandlerNativeCode{
+  
   static const startConfig = MethodChannel('channel');
 
-  factory HandlerNativeCode() {
-    return _instance;
-  }
-  HandlerNativeCode._internal();
-
-  static void onStartconfig() async {
+  @override
+  Future<void> onStartconfig() async {
     startConfig.setMethodCallHandler((call) async {});
   }
 
-  static Future<void> setPermission() async {
+  @override
+  Future<void> setPermission() async {
     await startConfig.invokeMethod('setPermission');
   }
 
-  static Future<void> setAutoStart() async {
+  @override
+  Future<void> setAutoStart() async {
     await startConfig.invokeMethod('setAutoStart');
   }
 
-  static Future<String> checkDeviceManufacturer() async {
+  @override
+  Future<String> checkDeviceManufacturer() async {
     return await startConfig.invokeMethod('checkDeviceManufacturer');
   }
 }

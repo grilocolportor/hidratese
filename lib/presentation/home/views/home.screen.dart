@@ -5,7 +5,11 @@ import '../controllers/home.controller.dart';
 class HomeScreen extends GetView<HomeController> {
   final _homeController = Get.find<HomeController>();
 
-  initMethod(context) async {}
+  initMethod(context) async {
+    Get.defaultDialog(
+        title: "Permissão para mostrar opções em segundo plano",
+        barrierDismissible: false);
+  }
 
   @override
   Widget build(BuildContext context) {
