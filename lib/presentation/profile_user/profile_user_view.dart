@@ -3,11 +3,13 @@ import 'package:flutter_switch/flutter_switch.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hidratese/presentation/dayle_param/controllers/dayle_param_controller.dart';
 import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 
 class ProfileUserView extends GetView<ProfileUserController> {
   final _perfilController = Get.find<ProfileUserController>();
+  final _dayleParamController = Get.find<DayleParamController>();
 
   _pickTime(BuildContext context, String modo) async {
     TimeOfDay? time = await showTimePicker(
@@ -78,18 +80,18 @@ class ProfileUserView extends GetView<ProfileUserController> {
                   CustomText(text: 'Peso: '),
                   Expanded(
                     child: Slider(
-                      value: _perfilController.peso.value,
+                      value: _dayleParamController.peso.value,
                       min: 0,
                       max: 200,
                       divisions: 200,
-                      label: _perfilController.peso.value.round().toString(),
+                      label: _dayleParamController.peso.value.round().toString(),
                       onChanged: (value) {
-                        _perfilController.peso.value = value;
+                        _dayleParamController.peso.value = value;
                       },
                     ),
                   ),
                   CustomText(
-                      text: _perfilController.peso.value.round().toString())
+                      text: _dayleParamController.peso.value.round().toString())
                 ],
               ),
               Row(
@@ -127,10 +129,7 @@ class ProfileUserView extends GetView<ProfileUserController> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 30
-              ),
-              
+              SizedBox(height: 30),
             ],
           ),
         ));

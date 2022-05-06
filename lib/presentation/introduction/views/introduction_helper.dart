@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hidratese/presentation/dayle_param/controllers/dayle_param_controller.dart';
 import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -12,6 +13,7 @@ class IntroductioHelper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _profile = Get.find<ProfileUserController>();
+    var _param = Get.find<DayleParamController>();
     return Scaffold(
       appBar: AppBar(),
       body: SizedBox(
@@ -32,6 +34,7 @@ class IntroductioHelper extends StatelessWidget {
           onDone: () async {
             print('Alguma coisa');
             await _profile.addPerfil();
+            await _param.addPeso();
           },
           onSkip: () {
             // You can also override onSkip callback

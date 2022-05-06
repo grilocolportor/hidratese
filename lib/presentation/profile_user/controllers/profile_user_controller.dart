@@ -10,7 +10,6 @@ class ProfileUserController extends GetxController {
   TextEditingController dormirEditController = TextEditingController();
   TextEditingController acordarEditController = TextEditingController();
   var sexo = true.obs;
-  var peso = 0.0.obs;
   var acordar = ''.obs;
   var dormir = ''.obs;
 

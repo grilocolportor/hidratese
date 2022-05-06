@@ -46,22 +46,25 @@ class DatabaseHandler (context: Context): SQLiteOpenHelper(context,DATABASE_NAME
         //table peso
         private val TABLE_PESO = "peso"
         private val TABLE_PESO_ID = "peso_id"
-        private val KEY_DATE_CHECK = "date"
+        private val KEY_DATE_PESO = "date"
         private val KEY_PESO = "peso"
 
         //table temperatura
         private val TABLE_TEMPERATURA = "temperatura"
         private val TABLE_TEMPERATURA_ID = "temperatura_id"
+        private val KEY_DATE_TEMPERATURA = "date"
         private val KEY_TEMPERATURA = "temperatura"
 
         //table humidade
         private val TABLE_HUMIDADE = "humidade"
         private val TABLE_HUMIDADE_ID = "humidade_id"
+        private val KEY_DATE_HUMIDADE = "date"
         private val KEY_HUMIDADE = "humidade"
 
         //table estilo de vida
         private val TABLE_ESTILO_VIDA = "estilo_vida"
         private val TABLE_ESTILO_VIDA_ID = "estilo_vida_id"
+        private val KEY_DATE_ESTILO_VIDA = "date"
         private val KEY_ESTILO_VIDA = "estilo_vida"
 
     }
@@ -103,25 +106,25 @@ class DatabaseHandler (context: Context): SQLiteOpenHelper(context,DATABASE_NAME
 
         val CREATE_PESO = ("CREATE TABLE " + TABLE_PESO + "("
                 + TABLE_PESO_ID + " INTEGER PRIMARY KEY  AUTOINCREMENT,"
-                + KEY_DATE_CHECK + " TEXT,"
+                + KEY_DATE_PESO + " TEXT,"
                 + KEY_PESO + " TEXT" + ")")
         db?.execSQL(CREATE_PESO)
 
         val CREATE_TEMPERATURA = ("CREATE TABLE " + TABLE_TEMPERATURA + "("
                 + TABLE_TEMPERATURA_ID + " INTEGER PRIMARY KEY  AUTOINCREMENT,"
-                + KEY_DATE_CHECK + " TEXT,"
+                + KEY_DATE_TEMPERATURA + " TEXT,"
                 + KEY_TEMPERATURA + " TEXT" + ")")
         db?.execSQL(CREATE_TEMPERATURA)
 
         val CREATE_HUMIDADE = ("CREATE TABLE " + TABLE_HUMIDADE + "("
                 + TABLE_HUMIDADE_ID + " INTEGER PRIMARY KEY  AUTOINCREMENT,"
-                + KEY_DATE_CHECK + " TEXT,"
+                + KEY_DATE_HUMIDADE + " TEXT,"
                 + KEY_HUMIDADE + " TEXT" + ")")
         db?.execSQL(CREATE_HUMIDADE)
 
         val CREATE_ESTILO_VIDA = ("CREATE TABLE " + TABLE_ESTILO_VIDA + "("
                 + TABLE_ESTILO_VIDA_ID + " INTEGER PRIMARY KEY  AUTOINCREMENT,"
-                + KEY_DATE_CHECK + " TEXT,"
+                + KEY_DATE_ESTILO_VIDA + " TEXT,"
                 + KEY_ESTILO_VIDA + " TEXT" + ")")
         db?.execSQL(CREATE_ESTILO_VIDA)
 

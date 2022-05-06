@@ -27,12 +27,14 @@ class DayleParamController extends GetxController {
     peso.value = item;
   }
 
-  void addDayleParam() async {
-    await _dayleParamUserCase.registerDaylePram(DayleParamsParams(
-        data: Utils.dataFormatOnlyDate(DateTime.now()),
-        humidade: humidade.value,
-        lifeStyle: estiloVida.value,
-        peso: peso.value,
-        temperatura: temperatura.value));
+  Future<void> addPeso() async {
+    await _dayleParamUserCase.registerPeso(PesoParam(
+        date: Utils.dataFormatOnlyDate(DateTime.now()),
+        peso: peso.value.toString()));
   }
 }
+
+// PesoParam(
+//         // data: Utils.dataFormatOnlyDate(DateTime.now()),
+//         // peso: peso.value
+//         ));

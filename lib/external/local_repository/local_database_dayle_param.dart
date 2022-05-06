@@ -8,7 +8,20 @@ class LocalDataBaseDayleParams implements IDayleParamDatasource {
   LocalDataBaseDayleParams(this._databaseHelper);
 
   @override
-  Future<int> registerDayleParams(DayleParamsParams params) async{
-    return await _databaseHelper.insert(params.toMap(), 'User');
+  Future<int> resgisterPeso(params) async{
+     Map<String, dynamic> pesoMap = {
+      'date' : params.date,
+      'peso' : params.peso
+    };
+     return await _databaseHelper.insert(pesoMap, 'peso');
   }
+
+  // @override
+  // Future<int> registerDayleParams(DayleParamsParams params) async {
+  //   Map<String, dynamic> humidadeMap = {
+  //     'data' : params.data,
+  //     'humidade' : params.humidade
+  //   };
+  //   return await _databaseHelper.insert(params.toMap(), 'User');
+  // }
 }
