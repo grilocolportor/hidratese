@@ -29,7 +29,7 @@ class HomeController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    showMessageConfig.value = _alreadConfig.getBool("isConfigured")?? true;
+   // showMessageConfig.value = _alreadConfig.getBool("isConfigured")?? true;
   }
 
   Future<void> setAlreadyConfig() async{

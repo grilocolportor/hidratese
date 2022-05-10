@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hidratese/di/injector.dart';
-import 'package:hidratese/external/handler_native_code/handler_native_code.dart';
-import 'package:hidratese/infrastructure/utils/utils.dart';
 import 'package:hidratese/presentation/dayle_param/controllers/dayle_param_controller.dart';
 import 'package:hidratese/presentation/home/views/home.screen.dart';
 import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';

@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/external/handler_native_code/handler_native_code.dart';
+import 'package:hidratese/external/storage/get_storage_handle.dart';
 import '../controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
   final _homeController = Get.find<HomeController>();
   final _handleNativeCode = Injector.resolve<HandlerNativeCode>();
+  final _alreadConfig = Injector.resolve<GetStoragehandle>();
 
   initMethod(context) async {
-    if (!_homeController.showMessageConfig.value) {
+
+    var  showMessageConfig = await _alreadConfig.getBool("isConfigured") ?? true;
+
+    if (showMessageConfig) {
       await _homeController.checkPermission().then((value) async {
         if (value.isNotEmpty) {
           await appPermissionDefaultDialog(value);

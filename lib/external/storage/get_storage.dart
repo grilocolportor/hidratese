@@ -1,16 +1,17 @@
 import 'package:get_storage/get_storage.dart';
 
 abstract class IGetStorageHandle {
-  void setData(String key, dynamic value);
-  int? getInt(String key) ;
+  Future<void> setData(String key, dynamic value);
 
-  String? getString(String key) => GetStorage().read(key);
+  Future<int?> getInt(String key) ;
 
-  bool? getBool(String key) => GetStorage().read(key);
+  Future<String?> getString(String key) => GetStorage().read(key);
 
-  double? getDouble(String key) => GetStorage().read(key);
+  Future<bool?> getBool(String key) => GetStorage().read(key);
 
-  dynamic getData(String key) => GetStorage().read(key);
+  Future<double?> getDouble(String key) => GetStorage().read(key);
 
-  void clearData() async => GetStorage().erase();
+  Future<dynamic> getData(String key) => GetStorage().read(key);
+
+  Future<void> clearData() async => await GetStorage().erase();
 }
