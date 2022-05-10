@@ -26,13 +26,7 @@ class HomeController extends GetxController {
   var device = ''.obs;
   var showMessageConfig = false.obs;
 
-  @override
-  void onReady() async {
-    super.onReady();
-   // showMessageConfig.value = _alreadConfig.getBool("isConfigured")?? true;
-  }
-
-  Future<void> setAlreadyConfig() async{
+  Future<void> setAlreadyConfig() async {
     _alreadConfig.setData("isConfigured", true);
   }
 
@@ -43,8 +37,13 @@ class HomeController extends GetxController {
     resultInsert.value = await _perfilController.getCountUserProfile();
     return resultInsert.value;
   }
+  
+  Future<bool> isConfigured() async{
+     return await _alreadConfig.getBool("isConfigured") ?? false;
+  }
 
   Future<String> checkPermission() async {
+    String result = "";
     String device =
         await _checkPermission.checkDeviceManufacturer().then((value) {
       return value.toLowerCase();
@@ -53,9 +52,10 @@ class HomeController extends GetxController {
     for (var name in Devices.values) {
       String target = name.toString().split('.').elementAt(1);
       if (device.removeAllWhitespace.contains(target)) {
+        result = target;
         break;
       }
     }
-    return device;
+    return result;
   }
 }
