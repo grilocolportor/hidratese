@@ -14,7 +14,7 @@ class OmboardingView extends GetView<OmboardingController> {
   initMethod(context) async {
     _homeController.onClick().then((value) {
       if (value == 0) {
-        Get.off(() => IntroductionView());
+        Get.off(() => HomeScreen());
       } else {
         Get.off(() => HomeScreen());
       }

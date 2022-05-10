@@ -9,7 +9,7 @@ import com.avs.hidratese.service.AutoStartService
 
 object Utils {
 
-    fun setPermissions(context: Context): String {
+    fun setAutoStart(context: Context): String {
 
         if (AutoStartPermissionHelper.getInstance().isAutoStartPermissionAvailable(context)) {
             AutoStartPermissionHelper.getInstance().getAutoStartPermission(context, true, true)
@@ -27,7 +27,7 @@ object Utils {
         }
     }
 
-    fun setAutoStart(context: Context): String {
+    fun setPermissions(context: Context): String {
 
         val manufacturer = Build.MANUFACTURER
         if ("xiaomi".equals(manufacturer, ignoreCase = true)) {

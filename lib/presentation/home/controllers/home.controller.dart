@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/external/handler_native_code/handler_native_code.dart';
+import 'package:hidratese/external/storage/get_storage_handle.dart';
 import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
 
 enum Devices {
@@ -18,31 +19,21 @@ enum Devices {
 
 class HomeController extends GetxController {
   final _perfilController = Get.find<ProfileUserController>();
-
-  final _handlerNativeCode = Injector.resolve<IHandlerNativeCode>();
+  final _checkPermission = Injector.resolve<HandlerNativeCode>();
+  final _alreadConfig = Injector.resolve<GetStoragehandle>();
 
   var resultInsert = 0.obs;
   var device = ''.obs;
-  var showMessage = false.obs;
+  var showMessageConfig = false.obs;
 
   @override
   void onReady() async {
     super.onReady();
-    device.value = await _handlerNativeCode.checkDeviceManufacturer();
-
-    for (var name in Devices.values) {
-      String dev = name.toString().split('.').elementAt(1);
-      if (device.value.removeAllWhitespace.contains(dev)) {
-        showMessage.value = true;
-        break;
-      }
-    }
-    print('=================${device.value}');
+    showMessageConfig.value = _alreadConfig.getBool("isConfigured")?? true;
   }
 
-  @override
-  void onInit() {
-    super.onInit();
+  Future<void> setAlreadyConfig() async{
+    _alreadConfig.setData("isConfigured", true);
   }
 
   @override
@@ -51,5 +42,20 @@ class HomeController extends GetxController {
   Future<int> onClick() async {
     resultInsert.value = await _perfilController.getCountUserProfile();
     return resultInsert.value;
+  }
+
+  Future<String> checkPermission() async {
+    String device =
+        await _checkPermission.checkDeviceManufacturer().then((value) {
+      return value.toLowerCase();
+    });
+
+    for (var name in Devices.values) {
+      String target = name.toString().split('.').elementAt(1);
+      if (device.removeAllWhitespace.contains(target)) {
+        break;
+      }
+    }
+    return device;
   }
 }

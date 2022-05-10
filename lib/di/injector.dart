@@ -8,6 +8,8 @@ import 'package:hidratese/external/handler_native_code/handler_native_code.dart'
 import 'package:hidratese/external/local_repository/local_database_dayle_param.dart';
 import 'package:hidratese/external/local_repository/local_database_user_profile.dart';
 import 'package:hidratese/external/local_repository/sql_lite/database_helper.dart';
+import 'package:hidratese/external/storage/get_storage.dart';
+import 'package:hidratese/external/storage/get_storage_handle.dart';
 import 'package:hidratese/infrastructure/repositories/daos/dayle_param_datasource.dart';
 import 'package:hidratese/infrastructure/repositories/daos/user_profile_datasource.dart';
 import 'package:hidratese/infrastructure/repositories/dayle_params_repository_impl.dart';
@@ -25,17 +27,14 @@ abstract class Injector {
           (container) => UserProfileRepositoryImpl(container.resolve()))
       ..registerFactory<IUserProfileDataSource>(
           (container) => LocalDataBaseUserProfile(container.resolve()))
-          
       ..registerFactory((container) => DayleParams())
       ..registerFactory((container) => DayleParamUserCase(container.resolve()))
       ..registerFactory<IDayleParamRespository>(
           (container) => DayleParamsReppsitoryImpl(container.resolve()))
       ..registerFactory<IDayleParamDatasource>(
           (container) => LocalDataBaseDayleParams(container.resolve()))
-
-      ..registerSingleton<IHandlerNativeCode>(
-          (container) => HandlerNativeCode())
-
+      ..registerFactory((container) => HandlerNativeCode())
+      ..registerFactory((container) => GetStoragehandle())
       ..registerFactory<ISQLDataBaseHelper>(
           (container) => DatabaseHelper.instance);
   }
