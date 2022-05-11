@@ -44,7 +44,12 @@ class HomeScreen extends GetView<HomeController> {
             ),
           ),
           TextButton(
-              onPressed: () => _homeController.onClick(),
+              onPressed: () {
+                _homeController.getPeso();
+                _homeController.getEstiloVida();
+                _homeController.getHumidade();
+                _homeController.getTemperatura();
+              },
               child: Text('Click aqui'))
         ],
       ),

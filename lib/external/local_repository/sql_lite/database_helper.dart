@@ -5,6 +5,8 @@ abstract class ISQLDataBaseHelper {
   Future<int> insertDayleTarget(Map<String, dynamic> row, String table);
   Future<int?> queryRowCount(String table);
   Future<List<Map<String, dynamic>>> queryAllRows(String table);
+  Future<List<Map<String, dynamic>>> queryLast(
+      List<String> columns, String table);
   Future<List<Map<String, dynamic>>> queryAllRowsByDate(
       String table, String date);
   Future<int> update(Map<String, dynamic> row, int id, String table);
@@ -126,5 +128,14 @@ class DatabaseHelper implements ISQLDataBaseHelper {
   Future<int> delete(int id, String table) async {
     Database db = await instance.database;
     return await db.delete(table, where: '$id = ?', whereArgs: [id]);
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> queryLast(
+      List<String> columns, String table) async {
+    Database db = await instance.database;
+    List<Map<String, dynamic>> d =
+        await db.rawQuery('SELECT * FROM $table ORDER BY  date DESC LIMIT 1');
+    return d;
   }
 }

@@ -9,6 +9,10 @@ abstract class IDayleParamUserCase {
   Future<Either<GeneralExcepion, int>> registerTemperatura(
       TemperaturaParam params);
   Future<Either<GeneralExcepion, int>> registerHumidade(HumidadeParam params);
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> getPeso();
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> getTemperatura();
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> getHumidade();
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> getEstiloVida();
 }
 
 class DayleParamUserCase implements IDayleParamUserCase {
@@ -37,6 +41,29 @@ class DayleParamUserCase implements IDayleParamUserCase {
   Future<Either<GeneralExcepion, int>> registerTemperatura(
       TemperaturaParam params) async {
     return await _dayleParamRespository.registerTemperatura(params);
+  }
+
+  @override
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> getPeso() async {
+    return await _dayleParamRespository.getPeso();
+  }
+
+  @override
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>>
+      getEstiloVida() async {
+    return await _dayleParamRespository.getEstiloVida();
+  }
+
+  @override
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>>
+      getHumidade() async {
+    return await _dayleParamRespository.gethumanidade();
+  }
+
+  @override
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>>
+      getTemperatura() async {
+    return await _dayleParamRespository.getTemperatura();
   }
 }
 

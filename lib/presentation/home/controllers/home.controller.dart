@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
+import 'package:hidratese/domain/usercases/dayle_params_usercase.dart';
 import 'package:hidratese/external/handler_native_code/handler_native_code.dart';
 import 'package:hidratese/external/storage/get_storage_handle.dart';
 import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
@@ -21,10 +22,16 @@ class HomeController extends GetxController {
   final _perfilController = Get.find<ProfileUserController>();
   final _checkPermission = Injector.resolve<HandlerNativeCode>();
   final _alreadConfig = Injector.resolve<GetStoragehandle>();
+  final _dayleParam = Injector.resolve<DayleParamUserCase>();
 
   var resultInsert = 0.obs;
   var device = ''.obs;
   var showMessageConfig = false.obs;
+
+  var peso = ''.obs;
+  var temperatura = ''.obs;
+  var humidade = ''.obs;
+  var estiloVida = ''.obs;
 
   Future<void> setAlreadyConfig() async {
     _alreadConfig.setData("isConfigured", true);
@@ -33,13 +40,49 @@ class HomeController extends GetxController {
   @override
   void onClose() {}
 
+  void getPeso() async {
+    var result = await _dayleParam.getPeso();
+    result.fold((l) => null, (r) {
+      for (var element in r) {
+        peso.value = element['peso'];
+      }
+    });
+  }
+
+  void getTemperatura() async {
+    var result = await _dayleParam.getTemperatura();
+    result.fold((l) => null, (r) {
+      for (var element in r) {
+        temperatura.value = element['temperatura'];
+      }
+    });
+  }
+
+   void getHumidade() async {
+    var result = await _dayleParam.getHumidade();
+    result.fold((l) => null, (r) {
+      for (var element in r) {
+        humidade.value = element['humidade'];
+      }
+    });
+  }
+
+  void getEstiloVida() async {
+    var result = await _dayleParam.getEstiloVida();
+    result.fold((l) => null, (r) {
+      for (var element in r) {
+        estiloVida.value = element['estiloVida'];
+      }
+    });
+  }
+
   Future<int> onClick() async {
     resultInsert.value = await _perfilController.getCountUserProfile();
     return resultInsert.value;
   }
-  
-  Future<bool> isConfigured() async{
-     return await _alreadConfig.getBool("isConfigured") ?? false;
+
+  Future<bool> isConfigured() async {
+    return await _alreadConfig.getBool("isConfigured") ?? false;
   }
 
   Future<String> checkPermission() async {

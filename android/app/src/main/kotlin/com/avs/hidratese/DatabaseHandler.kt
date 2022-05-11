@@ -45,25 +45,25 @@ class DatabaseHandler (context: Context): SQLiteOpenHelper(context,DATABASE_NAME
 
         //table peso
         private val TABLE_PESO = "peso"
-        private val TABLE_PESO_ID = "peso_id"
+        private val TABLE_PESO_ID = "id"
         private val KEY_DATE_PESO = "date"
         private val KEY_PESO = "peso"
 
         //table temperatura
         private val TABLE_TEMPERATURA = "temperatura"
-        private val TABLE_TEMPERATURA_ID = "temperatura_id"
+        private val TABLE_TEMPERATURA_ID = "id"
         private val KEY_DATE_TEMPERATURA = "date"
         private val KEY_TEMPERATURA = "temperatura"
 
         //table humidade
         private val TABLE_HUMIDADE = "humidade"
-        private val TABLE_HUMIDADE_ID = "humidade_id"
+        private val TABLE_HUMIDADE_ID = "id"
         private val KEY_DATE_HUMIDADE = "date"
         private val KEY_HUMIDADE = "humidade"
 
         //table estilo de vida
         private val TABLE_ESTILO_VIDA = "estilo_vida"
-        private val TABLE_ESTILO_VIDA_ID = "estilo_vida_id"
+        private val TABLE_ESTILO_VIDA_ID = "id"
         private val KEY_DATE_ESTILO_VIDA = "date"
         private val KEY_ESTILO_VIDA = "estilo_vida"
 

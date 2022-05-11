@@ -35,4 +35,26 @@ class DayleParamsReppsitoryImpl implements IDayleParamRespository {
     int a = await _dayleParamDatasource.resgisterTemperatura(param);
     return Right(a);
   }
+
+  @override
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> getPeso() async {
+    return Right(await _dayleParamDatasource.queryLast(['peso'], 'peso'));
+    
+  }
+
+  @override
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> getEstiloVida() async{
+    return Right(await _dayleParamDatasource.queryLast(['estilo_vida'], 'estilo_vida'));
+    
+  }
+
+  @override
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> getTemperatura() async{
+    return Right(await _dayleParamDatasource.queryLast(['temperatura'], 'temperatura'));
+  }
+
+  @override
+  Future<Either<GeneralExcepion, List<Map<String, dynamic>>>> gethumanidade() async{
+    return Right(await _dayleParamDatasource.queryLast(['humidade'], 'humidade'));
+  }
 }

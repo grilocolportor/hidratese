@@ -39,4 +39,9 @@ class LocalDataBaseDayleParams implements IDayleParamDatasource {
     };
     return await _databaseHelper.insert(map, 'temperatura');
   }
+
+  @override
+  Future<List<Map<String, dynamic>>> queryLast(List<String> columns, String table) async{
+    return  await _databaseHelper.queryLast(columns, table);
+  }
 }
