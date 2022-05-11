@@ -34,7 +34,12 @@ class HomeController extends GetxController {
   var humidade = ''.obs;
   var estiloVida = ''.obs;
 
-  var litrosMetaDia = ''.obs;
+  var litrosMetaDia = 50.0.obs;
+  var litrosIngeridos = 50.0.obs;
+  var litrosIngeridosPorcentagem = 0.0.obs;
+  var resizeWaveHeight = 0.0.obs;
+
+  var countTotal = 0.0.obs;
 
   Future<void> setAlreadyConfig() async {
     _alreadConfig.setData("isConfigured", true);
@@ -79,10 +84,24 @@ class HomeController extends GetxController {
     });
   }
 
-  Future<bool> getLitrosMetaDiaria() async {
-    litrosMetaDia.value =
-        (coeficientePadrao * double.parse(peso.value)).toString();
-    return true;
+  Future<double> getLitrosMetaDiaria() async {
+    litrosMetaDia.value = (coeficientePadrao * double.parse(peso.value));
+    return 150.0;
+  }
+
+  Future getLitrosIngeridosMetaDiaria() async {
+    litrosIngeridos.value = 50.0;
+  }
+
+  Future getLitrosIngeridosPorcetagem() async {
+    litrosIngeridosPorcentagem.value = (litrosIngeridos * 100) /litrosMetaDia.value;
+  }
+
+  Future resizeWave(double height) async {
+    resizeWaveHeight.value = 
+        (3580 * 100) / height;
+
+        //litrosIngeridosPorcentagem.value
   }
 
   Future<int> onClick() async {
