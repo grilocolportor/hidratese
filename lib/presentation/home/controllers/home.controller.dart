@@ -3,6 +3,7 @@ import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/domain/usercases/dayle_params_usercase.dart';
 import 'package:hidratese/external/handler_native_code/handler_native_code.dart';
 import 'package:hidratese/external/storage/get_storage_handle.dart';
+import 'package:hidratese/infrastructure/utils/contants.dart';
 import 'package:hidratese/presentation/profile_user/controllers/profile_user_controller.dart';
 
 enum Devices {
@@ -33,6 +34,8 @@ class HomeController extends GetxController {
   var humidade = ''.obs;
   var estiloVida = ''.obs;
 
+  var litrosMetaDia = ''.obs;
+
   Future<void> setAlreadyConfig() async {
     _alreadConfig.setData("isConfigured", true);
   }
@@ -40,7 +43,7 @@ class HomeController extends GetxController {
   @override
   void onClose() {}
 
-  void getPeso() async {
+  Future getPeso() async {
     var result = await _dayleParam.getPeso();
     result.fold((l) => null, (r) {
       for (var element in r) {
@@ -49,7 +52,7 @@ class HomeController extends GetxController {
     });
   }
 
-  void getTemperatura() async {
+  Future getTemperatura() async {
     var result = await _dayleParam.getTemperatura();
     result.fold((l) => null, (r) {
       for (var element in r) {
@@ -58,7 +61,7 @@ class HomeController extends GetxController {
     });
   }
 
-   void getHumidade() async {
+  Future getHumidade() async {
     var result = await _dayleParam.getHumidade();
     result.fold((l) => null, (r) {
       for (var element in r) {
@@ -67,13 +70,19 @@ class HomeController extends GetxController {
     });
   }
 
-  void getEstiloVida() async {
+  Future getEstiloVida() async {
     var result = await _dayleParam.getEstiloVida();
     result.fold((l) => null, (r) {
       for (var element in r) {
-        estiloVida.value = element['estiloVida'];
+        estiloVida.value = element['estilo_vida'];
       }
     });
+  }
+
+  Future<bool> getLitrosMetaDiaria() async {
+    litrosMetaDia.value =
+        (coeficientePadrao * double.parse(peso.value)).toString();
+    return true;
   }
 
   Future<int> onClick() async {

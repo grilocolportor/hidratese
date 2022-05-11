@@ -1,10 +1,16 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/external/handler_native_code/handler_native_code.dart';
+import 'package:hidratese/presentation/widgets/wavecontainer/wave_container.dart';
 import '../controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
+  var thisWidth = 0.0;
+  var thisHeight = 0.0;
+
   final _homeController = Get.find<HomeController>();
   final _handleNativeCode = Injector.resolve<HandlerNativeCode>();
 
@@ -21,39 +27,76 @@ class HomeScreen extends GetView<HomeController> {
         }
       }
     });
+
+    await _homeController.getPeso();
+    await _homeController.getEstiloVida();
+    await _homeController.getHumidade();
+    await _homeController.getTemperatura();
+    await _homeController.getLitrosMetaDiaria();
   }
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQuery.of(context);
+    thisHeight = queryData.size.height;
+    thisWidth = queryData.size.width;
+
     WidgetsBinding.instance!.addPostFrameCallback((_) => initMethod(context));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('HomeScreen'),
-        centerTitle: true,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Obx(
-              () => Text(
-                _homeController.resultInsert.value.toString(),
-                style: TextStyle(fontSize: 20),
-              ),
-            ),
+        appBar: AppBar(
+          title: Text('HomeScreen'),
+          centerTitle: true,
+        ),
+        body: Container(
+          child: FutureBuilder(
+            future: _homeController.getLitrosMetaDiaria(),
+            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              if (snapshot.hasData) {
+                return Stack(
+                  children: [
+                    Positioned.fill(
+                        child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Obx(
+                              () => WaveContainer(
+                                height:
+                                    50, //_hidrateseController.waterHeight.value, // thisHeight - 200,
+                                width: double.infinity,
+                                waveColor: Colors.blueAccent,
+                              ),
+                            ))),
+                  ],
+                );
+              }
+              if (snapshot.hasError) {
+                return Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 16),
+                    child: Text('Ops! ouve um error!!!\n${snapshot.error}'),
+                  ),
+                );
+              } else {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        child: CircularProgressIndicator(),
+                        width: 60,
+                        height: 60,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 16),
+                        child: Text('Awaiting result...'),
+                      )
+                    ],
+                  ),
+                );
+              }
+            },
           ),
-          TextButton(
-              onPressed: () {
-                _homeController.getPeso();
-                _homeController.getEstiloVida();
-                _homeController.getHumidade();
-                _homeController.getTemperatura();
-              },
-              child: Text('Click aqui'))
-        ],
-      ),
-    );
+        ));
   }
 
   Future addPermissionAutoStart(String device) async {
