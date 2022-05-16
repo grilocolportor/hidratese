@@ -84,9 +84,9 @@ class HomeController extends GetxController {
     });
   }
 
-  Future<double> getLitrosMetaDiaria() async {
+  Future getLitrosMetaDiaria() async {
     litrosMetaDia.value = (coeficientePadrao * double.parse(peso.value));
-    return 150.0;
+    
   }
 
   Future getLitrosIngeridosMetaDiaria() async {
@@ -99,7 +99,7 @@ class HomeController extends GetxController {
 
   Future resizeWave(double height) async {
     resizeWaveHeight.value = 
-        (3580 * 100) / height;
+        (100 * 100) / height;
 
         //litrosIngeridosPorcentagem.value
   }
