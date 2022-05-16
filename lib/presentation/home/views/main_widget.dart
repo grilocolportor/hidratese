@@ -8,18 +8,17 @@ import 'package:hidratese/presentation/home/controllers/home.controller.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
 
 class MainWidget extends GetView<HomeController> {
-  var thisWidth = 0.0;
-  var thisHeight = 0.0;
-
   final _homeController = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData = MediaQuery.of(context);
+    var thisTextSize = queryData.textScaleFactor;
+    var thisHeight = queryData.size.height;
+    var thisWidth = queryData.size.width;
     return Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          width: thisWidth,
-          height: thisHeight,
           child: Stack(children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,11 +33,11 @@ class MainWidget extends GetView<HomeController> {
                         height: 80,
                       ),
                       Obx(
-                        () =>
-                         CustomText(
-                          text:'${_homeController.litrosMetaDia.value}ml',
+                        () => CustomText(
+                          text: '${_homeController.litrosMetaDia.value}ml',
+                          size: thisTextSize / 30,
                         ),
-                     ),
+                      ),
                       SizedBox(
                         height: 30,
                       ),

@@ -19,7 +19,6 @@ class _CustomTextState extends State<CustomText> {
     return Text(
       widget.text,
       style: GoogleFonts.quicksand(
-        //  textStyle: Theme.of(context).textTheme.headline1,
         fontSize:
             widget.size == 0 ? thisTextSize / .06 : thisTextSize / widget.size!,
         fontWeight: FontWeight.bold,
