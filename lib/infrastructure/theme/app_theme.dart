@@ -9,7 +9,8 @@ class AppTheme {
       textButtonTheme: textButtonThemeLight,
       outlinedButtonTheme: outLineBorderLight,
       textSelectionTheme: textSelectionThemeLight,
-      appBarTheme: appBarLight);
+      appBarTheme: appBarLight,
+      primaryColor: colorSchemeLight.secondary);
 
   get themeDataDark => ThemeData.dark().copyWith(
       textTheme: textThemeDark,
@@ -17,5 +18,6 @@ class AppTheme {
       textButtonTheme: textButtonThemeDark,
       outlinedButtonTheme: outLineBorderDrak,
       textSelectionTheme: textSelectionThemeDark,
-      appBarTheme: appBarDark);
+      appBarTheme: appBarDark, 
+      primaryColor: colorSchemeDark .secondary);
 }

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hidratese/infrastructure/utils/utils.dart';
 import 'package:hidratese/presentation/home/controllers/home.controller.dart';
 import 'package:hidratese/presentation/widgets/custom_text.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class MainWidget extends GetView<HomeController> {
   final _homeController = Get.find<HomeController>();
@@ -18,6 +19,10 @@ class MainWidget extends GetView<HomeController> {
     var thisWidth = queryData.size.width;
     return Scaffold(
         backgroundColor: Colors.transparent,
+        floatingActionButton: FloatingActionButton(onPressed: () async {
+          await _homeController.incrementLitrosIngerido(200);
+          await _homeController.resizeWave(thisHeight);
+        }),
         body: Container(
           child: Stack(children: [
             Row(
@@ -30,7 +35,7 @@ class MainWidget extends GetView<HomeController> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       SizedBox(
-                        height: 80,
+                        height: thisHeight / 10,
                       ),
                       Obx(
                         () => CustomText(
@@ -41,41 +46,40 @@ class MainWidget extends GetView<HomeController> {
                       SizedBox(
                         height: 30,
                       ),
-                      // Obx(
-                      //   () => SleekCircularSlider(
-                      //     appearance: CircularSliderAppearance(
-                      //         spinnerDuration: 5000,
-                      //         infoProperties: InfoProperties(
-                      //             bottomLabelText:
-                      //                 '${_hidrateseController.quantidadeTomada.value.toInt()}ml',
-                      //             bottomLabelStyle: GoogleFonts.quicksand(
-                      //                 textStyle:
-                      //                     Theme.of(context).textTheme.headline1,
-                      //                 fontSize: 20,
-                      //                 color: Colors.white),
-                      //             mainLabelStyle: GoogleFonts.quicksand(
-                      //                 textStyle:
-                      //                     Theme.of(context).textTheme.headline1,
-                      //                 fontSize: 90,
-                      //                 color: Colors.white),
-                      //             modifier: (double value) {
-                      //               final roundedValue =
-                      //                   value.ceil().toInt().toString();
-                      //               return '$roundedValue%';
-                      //             }),
-                      //         size: 300,
-                      //         customColors: CustomSliderColors(
-                      //             dotColor: Colors.black,
-                      //             trackColor: Colors.white,
-                      //             //   shadowColor: Colors.white,
-                      //             progressBarColor: Colors.white),
-                      //         customWidths: CustomSliderWidths(
-                      //             progressBarWidth: 5, shadowWidth: 15)),
-                      //     min: 0,
-                      //     max: 100,
-                      //     initialValue: _hidrateseController.porcentagem.value,
-                      //   ),
-                      // ),
+                      Obx(
+                        () => SleekCircularSlider(
+                          appearance: CircularSliderAppearance(
+                              spinnerDuration: 5000,
+                              infoProperties: InfoProperties(
+                                  bottomLabelText:
+                                      '${_homeController.litrosIngeridos.value.toInt()}ml',
+                                  bottomLabelStyle: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontSize: 50),
+                                  mainLabelStyle:  TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontSize: 50),
+                                  modifier: (double value) {
+                                    final roundedValue =
+                                        value.ceil().toInt().toString();
+                                    return '$roundedValue%';
+                                  }),
+                              size: 300,
+                              customColors: CustomSliderColors(
+                                  dotColor:
+                                      Theme.of(context).colorScheme.tertiary,
+                                  trackColor: Theme.of(context).primaryColor,
+                                  shadowColor: Theme.of(context).shadowColor,
+                                  progressBarColor:
+                                      Theme.of(context).primaryColor),
+                              customWidths: CustomSliderWidths(
+                                  progressBarWidth: 5, shadowWidth: 15)),
+                          min: 0,
+                          max: 100,
+                          initialValue:
+                              _homeController.litrosIngeridosPorcentagem.value,
+                        ),
+                      ),
                       // Container(child: Expanded(child: listTodayDrink(context)))
                     ],
                   ),

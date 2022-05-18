@@ -84,9 +84,18 @@ class HomeController extends GetxController {
     });
   }
 
+
+  //---------------------- litros ------------------
+  Future incrementLitrosIngerido(double ml) async {
+     litrosIngeridos.value = litrosIngeridos.value + ml;
+  }
+
+  Future devrementlistrosIngerido(double ml) async{
+     litrosIngeridos.value = litrosIngeridos.value - ml;
+  }
+
   Future getLitrosMetaDiaria() async {
     litrosMetaDia.value = (coeficientePadrao * double.parse(peso.value));
-    
   }
 
   Future getLitrosIngeridosMetaDiaria() async {
@@ -94,14 +103,12 @@ class HomeController extends GetxController {
   }
 
   Future getLitrosIngeridosPorcetagem() async {
-    litrosIngeridosPorcentagem.value = (litrosIngeridos * 100) /litrosMetaDia.value;
+    litrosIngeridosPorcentagem.value =
+        (litrosIngeridos * 100) / litrosMetaDia.value;
   }
 
-  Future resizeWave(double height) async {
-    resizeWaveHeight.value = 
-        (100 * 100) / height;
-
-        //litrosIngeridosPorcentagem.value
+  Future resizeWave(double heightInc) async {
+    resizeWaveHeight.value = (litrosIngeridos.value * 100) / heightInc;
   }
 
   Future<int> onClick() async {

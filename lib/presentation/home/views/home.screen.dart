@@ -5,12 +5,12 @@ import 'package:get/get.dart';
 import 'package:hidratese/di/injector.dart';
 import 'package:hidratese/external/handler_native_code/handler_native_code.dart';
 import 'package:hidratese/presentation/home/views/main_widget.dart';
+import 'package:hidratese/presentation/widgets/custom_text.dart';
 import 'package:hidratese/presentation/widgets/wavecontainer/wave_container.dart';
 import '../controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
-  var thisWidth = 0.0;
-  var thisHeight = 0.0;
+ 
 
   final _homeController = Get.find<HomeController>();
   final _handleNativeCode = Injector.resolve<HandlerNativeCode>();
@@ -37,19 +37,20 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData queryData = MediaQuery.of(context);
-    thisHeight = queryData.size.height;
-    thisWidth = queryData.size.width;
+     MediaQueryData queryData = MediaQuery.of(context);
+    var thisTextSize = queryData.textScaleFactor;
+    var thisHeight = queryData.size.height;
+    var thisWidth = queryData.size.width;
 
     WidgetsBinding.instance!.addPostFrameCallback((_) => initMethod(context));
 
     _homeController.resizeWave(thisHeight);
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('HomeScreen'),
-          centerTitle: true,
-        ),
+        // appBar: AppBar(
+        //   title: CustomText(text: 'Hidratese', size: thisTextSize,),
+        //   centerTitle: true,
+        // ),
         body: Container(
           child: FutureBuilder(
             future: _homeController.getLitrosMetaDiaria(),

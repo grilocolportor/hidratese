@@ -4,7 +4,8 @@ import 'package:hidratese/infrastructure/utils/utils.dart';
 final colorSchemeDark = ColorScheme.dark(
   primary: Color(Utils.getColorFromHex('#173447')),
   secondary: Colors.white,
-  tertiary: Colors.lightBlue
+  tertiary: Colors.lightBlue,
+  shadow: Colors.white70,
 );
 
 final textStyleDark = TextStyle(color: colorSchemeDark.secondary);
@@ -40,6 +41,6 @@ final textSelectionThemeDark = TextSelectionThemeData(
 
 
 final appBarDark= AppBarTheme(
-  backgroundColor: colorSchemeDark.primary,
+  backgroundColor: Colors.transparent,
   elevation: 0
 );

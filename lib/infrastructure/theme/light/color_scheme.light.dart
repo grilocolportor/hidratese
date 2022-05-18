@@ -4,7 +4,8 @@ import 'package:hidratese/infrastructure/utils/utils.dart';
 final colorSchemeLight = ColorScheme.light(
     primary: Colors.white,
     secondary: Color(Utils.getColorFromHex('#173447')),
-    tertiary: Colors.lightBlue);
+    tertiary: Colors.lightBlue, 
+    shadow: Colors.white70);
 
 final textStyleWhite = TextStyle(
   color: colorSchemeLight.secondary,
@@ -40,6 +41,6 @@ final textSelectionThemeLight = TextSelectionThemeData(
 );
 
 final appBarLight = AppBarTheme(
-  backgroundColor: colorSchemeLight.primary,
+  backgroundColor: Colors.transparent,
   elevation: 0
 );
